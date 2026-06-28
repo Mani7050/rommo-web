@@ -46,9 +46,9 @@ const DEFAULT_MARKETING_SETTINGS = {
     stat3Label: "Average Rating"
   },
   contact: {
-    email: "info@rommo.in",
-    phone: "+91 98765 43210",
-    address: "102, 5th Main Rd, Sector 6, HSR Layout, Bengaluru, Karnataka 560102",
+    email: "mraj14558@gmail.com",
+    phone: "+91 7050805204",
+    address: "Noida Sector- 62",
     mapLink: "https://maps.google.com"
   }
 }
@@ -89,7 +89,15 @@ export async function getMarketingSettings(): Promise<typeof DEFAULT_MARKETING_S
 
   const local = localStorage.getItem("rommo_marketing_settings")
   if (local) {
-    return JSON.parse(local)
+    const parsed = JSON.parse(local)
+    if (parsed.contact && parsed.contact.email === "info@rommo.in") {
+      parsed.contact.email = "mraj14558@gmail.com"
+      parsed.contact.phone = "+91 7050805204"
+      parsed.contact.address = "Noida Sector- 62"
+      localStorage.setItem("rommo_marketing_settings", JSON.stringify(parsed))
+      return parsed
+    }
+    return parsed
   }
   localStorage.setItem("rommo_marketing_settings", JSON.stringify(DEFAULT_MARKETING_SETTINGS))
   return DEFAULT_MARKETING_SETTINGS
