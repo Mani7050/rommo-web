@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
 import { useMarketing } from "../context/MarketingContext"
 import { submitInquiry } from "../lib/db-service"
+import { toast } from "sonner"
+import { motion } from "framer-motion"
 
 export const Contact: React.FC = () => {
   const { settings } = useMarketing()
@@ -16,7 +18,7 @@ export const Contact: React.FC = () => {
   const handleInquirySubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!contactName || !contactEmail || !contactPhone || !contactMessage) {
-      alert("Please fill all contact fields.")
+      toast.error("Please fill all contact fields.")
       return
     }
 
@@ -28,14 +30,14 @@ export const Contact: React.FC = () => {
         phone: contactPhone,
         message: contactMessage
       })
-      alert("Thank you! Your inquiry has been registered. Our team will contact you shortly.")
+      toast.success("Inquiry registered successfully! Our team will contact you shortly.")
       setContactName("")
       setContactEmail("")
       setContactPhone("")
       setContactMessage("")
     } catch (err) {
       console.error(err)
-      alert("Failed to submit inquiry. Please try again.")
+      toast.error("Failed to submit inquiry. Please try again.")
     } finally {
       setFormSubmitting(false)
     }
@@ -141,14 +143,16 @@ export const Contact: React.FC = () => {
               />
             </div>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={formSubmitting}
               className="bg-primary text-white flex items-center justify-center gap-2 p-3 text-xs font-black tracking-wider uppercase rounded-xl hover:bg-primary/95 transition-all shadow-md mt-2 disabled:opacity-50 cursor-pointer"
             >
               <Send className="size-4" />
               {formSubmitting ? "Sending..." : "Submit Inquiry"}
-            </button>
+            </motion.button>
           </form>
         </div>
 

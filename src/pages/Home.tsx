@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { Star, CheckCircle2, Wifi, Key, ShieldCheck } from "lucide-react"
 import { useMarketing } from "../context/MarketingContext"
+import { motion } from "framer-motion"
 
 export const Home: React.FC = () => {
   const { settings, testimonials } = useMarketing()
@@ -24,13 +25,23 @@ export const Home: React.FC = () => {
           {/* TEXT & ACTIONS COLUMN */}
           <div className="flex flex-col gap-7 max-w-xl relative z-10">
             {/* Tagline pill */}
-            <div className="flex items-center gap-2 self-start px-3.5 py-1.5 bg-primary/10 dark:bg-primary/20 text-primary text-[10px] font-black tracking-widest uppercase rounded-full border border-primary/25 shadow-xs">
+            <motion.div 
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="flex items-center gap-2 self-start px-3.5 py-1.5 bg-primary/10 dark:bg-primary/20 text-primary text-[10px] font-black tracking-widest uppercase rounded-full border border-primary/25 shadow-xs"
+            >
               <span className="flex size-1.5 bg-primary rounded-full animate-ping"></span>
               SECURE WORKSPACES
-            </div>
+            </motion.div>
             
             {/* Headline */}
-            <h1 className="text-2xl sm:text-3xl lg:text-[40px] font-extrabold tracking-tight text-zinc-900 dark:text-white leading-tight">
+            <motion.h1 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+              className="text-2xl sm:text-3xl lg:text-[40px] font-extrabold tracking-tight text-zinc-900 dark:text-white leading-tight"
+            >
               {settings.hero.headline.split(" ").map((word: string, i: number) => {
                 if (i < 2) {
                   return (
@@ -41,15 +52,25 @@ export const Home: React.FC = () => {
                 }
                 return <span key={i} className="mr-2.5 inline-block">{word}</span>
               })}
-            </h1>
+            </motion.h1>
 
             {/* Subtitle */}
-            <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 leading-relaxed font-medium">
+            <motion.p 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 leading-relaxed font-medium"
+            >
               {settings.hero.subtitle}
-            </p>
+            </motion.p>
 
             {/* CTA row */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-2">
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row gap-4 mt-2"
+            >
               <Link
                 to="/spaces"
                 className="bg-primary hover:bg-primary/95 text-white px-7 py-4 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg shadow-primary/25 hover:scale-102 active:scale-98 text-center"
@@ -62,10 +83,15 @@ export const Home: React.FC = () => {
               >
                 Book Guided Tour
               </Link>
-            </div>
+            </motion.div>
 
             {/* Quick stats row */}
-            <div className="grid grid-cols-3 gap-6 mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="grid grid-cols-3 gap-6 mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800"
+            >
               <div className="flex flex-col gap-1">
                 <span className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight">{settings.hero.stat1}</span>
                 <span className="text-[10px] font-bold text-zinc-450 dark:text-zinc-500 uppercase tracking-widest leading-none">{settings.hero.stat1Label}</span>
@@ -81,7 +107,7 @@ export const Home: React.FC = () => {
                 </div>
                 <span className="text-[10px] font-bold text-zinc-450 dark:text-zinc-500 uppercase tracking-widest leading-none">{settings.hero.stat3Label}</span>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* DYNAMIC VISUAL CONTAINER */}
@@ -90,23 +116,36 @@ export const Home: React.FC = () => {
             <div className="absolute -inset-4 border border-zinc-200/50 dark:border-zinc-800/50 rounded-3xl [mask-image:linear-gradient(to_bottom,black,transparent)] pointer-events-none"></div>
             
             {/* Main Image Card with glow and reflection */}
-            <div className="relative w-full max-w-lg aspect-4/3 rounded-3xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.3)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] border border-white/20 dark:border-zinc-800 hover:scale-[1.01] transition-all duration-500 group">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+              className="relative w-full max-w-lg aspect-4/3 rounded-3xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.3)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] border border-white/20 dark:border-zinc-800 hover:scale-[1.01] transition-all duration-500 group"
+            >
               <img
                 src={settings.hero.imageUrl}
                 alt="Workspace"
                 className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/45 to-transparent"></div>
-            </div>
+            </motion.div>
 
             {/* Floating Badge 1: Top-Right */}
-            <div className="absolute -top-4 -right-4 bg-zinc-900/90 dark:bg-white/90 backdrop-blur-md px-4 py-2 shadow-xl rounded-2xl border border-white/10 dark:border-zinc-200/20 flex items-center gap-1.5 animate-pulse">
-              <span className="flex size-2 bg-emerald-500 rounded-full"></span>
+            <motion.div 
+              animate={{ y: [0, -6, 0] }}
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+              className="absolute -top-4 -right-4 bg-zinc-900/90 dark:bg-white/90 backdrop-blur-md px-4 py-2 shadow-xl rounded-2xl border border-white/10 dark:border-zinc-200/20 flex items-center gap-1.5"
+            >
+              <span className="flex size-2 bg-emerald-500 rounded-full animate-pulse"></span>
               <span className="text-[10px] font-black text-white dark:text-zinc-950 uppercase tracking-widest">⚡ 24/7 Access</span>
-            </div>
+            </motion.div>
 
             {/* Floating Card 2: Bottom-Left */}
-            <div className="absolute -bottom-6 -left-6 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md p-4 shadow-xl rounded-2xl border border-zinc-200/80 dark:border-zinc-800 max-w-[210px] flex flex-col gap-1.5 transition-transform hover:-translate-y-1 duration-300">
+            <motion.div 
+              animate={{ y: [0, 6, 0] }}
+              transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
+              className="absolute -bottom-6 -left-6 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md p-4 shadow-xl rounded-2xl border border-zinc-200/80 dark:border-zinc-800 max-w-[210px] flex flex-col gap-1.5 transition-transform hover:-translate-y-1 duration-300"
+            >
               <div className="flex items-center gap-2">
                 <span className="p-1 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-500 rounded-lg"><CheckCircle2 className="size-4" /></span>
                 <span className="text-[10px] font-black text-zinc-900 dark:text-white uppercase tracking-wider">Smart PIN Access</span>
@@ -114,7 +153,7 @@ export const Home: React.FC = () => {
               <p className="text-[9px] text-zinc-500 dark:text-zinc-400 leading-normal">
                 Receive private entry PIN code instantly upon app checkout. No physical keys required.
               </p>
-            </div>
+            </motion.div>
           </div>
 
         </div>

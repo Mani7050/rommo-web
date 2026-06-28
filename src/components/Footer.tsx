@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { Facebook, Twitter, Instagram, Linkedin, Send, Mail, Phone, MapPin } from "lucide-react"
+import { motion } from "framer-motion"
+import { toast } from "sonner"
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState("")
@@ -8,7 +10,7 @@ export const Footer: React.FC = () => {
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault()
     if (email) {
-      alert("Thank you for subscribing to our newsletter!")
+      toast.success("Thank you for subscribing to our newsletter!")
       setEmail("")
     }
   }
@@ -35,18 +37,42 @@ export const Footer: React.FC = () => {
             </p>
             {/* Social Icons */}
             <div className="flex items-center gap-3.5 mt-2">
-              <a href="#" className="p-2 bg-zinc-900 hover:bg-primary hover:text-white rounded-lg transition-all text-zinc-500" aria-label="Facebook">
+              <motion.a 
+                whileHover={{ scale: 1.15, rotate: 8, y: -2 }}
+                whileTap={{ scale: 0.92 }}
+                href="#" 
+                className="p-2 bg-zinc-900 hover:bg-primary hover:text-white rounded-lg transition-all text-zinc-500" 
+                aria-label="Facebook"
+              >
                 <Facebook className="size-4" />
-              </a>
-              <a href="#" className="p-2 bg-zinc-900 hover:bg-primary hover:text-white rounded-lg transition-all text-zinc-500" aria-label="Twitter">
+              </motion.a>
+              <motion.a 
+                whileHover={{ scale: 1.15, rotate: -8, y: -2 }}
+                whileTap={{ scale: 0.92 }}
+                href="#" 
+                className="p-2 bg-zinc-900 hover:bg-primary hover:text-white rounded-lg transition-all text-zinc-500" 
+                aria-label="Twitter"
+              >
                 <Twitter className="size-4" />
-              </a>
-              <a href="#" className="p-2 bg-zinc-900 hover:bg-primary hover:text-white rounded-lg transition-all text-zinc-500" aria-label="Instagram">
+              </motion.a>
+              <motion.a 
+                whileHover={{ scale: 1.15, rotate: 8, y: -2 }}
+                whileTap={{ scale: 0.92 }}
+                href="#" 
+                className="p-2 bg-zinc-900 hover:bg-primary hover:text-white rounded-lg transition-all text-zinc-500" 
+                aria-label="Instagram"
+              >
                 <Instagram className="size-4" />
-              </a>
-              <a href="#" className="p-2 bg-zinc-900 hover:bg-primary hover:text-white rounded-lg transition-all text-zinc-500" aria-label="LinkedIn">
+              </motion.a>
+              <motion.a 
+                whileHover={{ scale: 1.15, rotate: -8, y: -2 }}
+                whileTap={{ scale: 0.92 }}
+                href="#" 
+                className="p-2 bg-zinc-900 hover:bg-primary hover:text-white rounded-lg transition-all text-zinc-500" 
+                aria-label="LinkedIn"
+              >
                 <Linkedin className="size-4" />
-              </a>
+              </motion.a>
             </div>
           </div>
 
@@ -103,13 +129,15 @@ export const Footer: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-zinc-900 border border-zinc-800 rounded-xl py-2.5 pl-3.5 pr-10 text-xs focus:outline-hidden focus:border-primary text-white"
               />
-              <button
+              <motion.button
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
                 type="submit"
                 className="absolute right-1 p-2 bg-primary hover:bg-primary/95 text-white rounded-lg transition-colors cursor-pointer"
                 aria-label="Subscribe"
               >
                 <Send className="size-3.5" />
-              </button>
+              </motion.button>
             </form>
           </div>
 
@@ -123,17 +151,17 @@ export const Footer: React.FC = () => {
           </div>
           <div className="flex items-center gap-3">
             <Phone className="size-4 text-primary shrink-0" />
-            <span>+91 7050805204</span>
+            <span>+91 81115456373</span>
           </div>
           <div className="flex items-center gap-3">
             <Mail className="size-4 text-primary shrink-0" />
-            <span>mraj14558@gmail.com</span>
+            <span>engineerfareed945@gmail.com</span>
           </div>
         </div>
 
         {/* Footer Bottom Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-zinc-650 text-[11px]">
-          <p>© {new Date().getFullYear()} Rommo Inc. Designed by Mani Kant Suman. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Rommo Inc. Designed by Fareed Ahamad. All rights reserved.</p>
           <div className="flex gap-5">
             <a href="#" className="hover:text-zinc-400 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-zinc-400 transition-colors">Terms of Service</a>

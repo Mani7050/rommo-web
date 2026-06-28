@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { ChevronDown, HelpCircle } from "lucide-react"
 import { useMarketing } from "../context/MarketingContext"
+import { motion, AnimatePresence } from "framer-motion"
 
 export const FAQ: React.FC = () => {
   const { faqs, loading } = useMarketing()
@@ -46,11 +47,25 @@ export const FAQ: React.FC = () => {
                   <ChevronDown className={`size-4 text-zinc-400 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
                 </button>
 
-                {isOpen && (
-                  <div className="px-4.5 pb-4.5 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/50 pt-3 flex flex-col gap-2">
-                    <p>{faq.answer}</p>
-                  </div>
-                )}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      key="content"
+                      initial="collapsed"
+                      animate="open"
+                      exit="collapsed"
+                      variants={{
+                        open: { opacity: 1, height: "auto" },
+                        collapsed: { opacity: 0, height: 0 }
+                      }}
+                      transition={{ duration: 0.25, ease: [0.04, 0.62, 0.23, 0.98] }}
+                    >
+                      <div className="px-4.5 pb-4.5 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/50 pt-3 flex flex-col gap-2">
+                        <p>{faq.answer}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             )
           })}

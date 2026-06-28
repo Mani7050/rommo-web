@@ -46,8 +46,8 @@ const DEFAULT_MARKETING_SETTINGS = {
     stat3Label: "Average Rating"
   },
   contact: {
-    email: "mraj14558@gmail.com",
-    phone: "+91 7050805204",
+    email: "engineerfareed945@gmail.com",
+    phone: "+91 81115456373",
     address: "Noida Sector- 62",
     mapLink: "https://maps.google.com"
   }
@@ -90,9 +90,9 @@ export async function getMarketingSettings(): Promise<typeof DEFAULT_MARKETING_S
   const local = localStorage.getItem("rommo_marketing_settings")
   if (local) {
     const parsed = JSON.parse(local)
-    if (parsed.contact && parsed.contact.email === "info@rommo.in") {
-      parsed.contact.email = "mraj14558@gmail.com"
-      parsed.contact.phone = "+91 7050805204"
+    if (parsed.contact && (parsed.contact.email === "info@rommo.in" || parsed.contact.email === "mraj14558@gmail.com")) {
+      parsed.contact.email = "engineerfareed945@gmail.com"
+      parsed.contact.phone = "+91 81115456373"
       parsed.contact.address = "Noida Sector- 62"
       localStorage.setItem("rommo_marketing_settings", JSON.stringify(parsed))
       return parsed
