@@ -104,7 +104,7 @@ export const Contact: React.FC = () => {
                   value={contactName}
                   onChange={(e) => setContactName(e.target.value)}
                   className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-850 rounded-xl p-3 text-xs focus:outline-hidden focus:border-primary text-zinc-800 dark:text-white"
-                  placeholder="e.g. Mani Kumar"
+                  placeholder="e.g. Fareed Ahamad"
                 />
               </div>
               <div className="flex flex-col gap-1.5">
@@ -115,7 +115,7 @@ export const Contact: React.FC = () => {
                   value={contactPhone}
                   onChange={(e) => setContactPhone(e.target.value)}
                   className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-850 rounded-xl p-3 text-xs focus:outline-hidden focus:border-primary text-zinc-800 dark:text-white"
-                  placeholder="+91 99999 99999"
+                  placeholder="+91 81154 56373"
                 />
               </div>
             </div>
@@ -128,7 +128,7 @@ export const Contact: React.FC = () => {
                 value={contactEmail}
                 onChange={(e) => setContactEmail(e.target.value)}
                 className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-850 rounded-xl p-3 text-xs focus:outline-hidden focus:border-primary text-zinc-800 dark:text-white"
-                placeholder="mani@rommo.in"
+                placeholder="fareed@rommo.in"
               />
             </div>
 
